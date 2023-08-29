@@ -1,0 +1,48 @@
+title Git commands
+
+participant local(master)
+participant remote(origin/master)
+
+participant local(feature-1)
+
+
+participant remote(origin/feature-1)
+
+local(master)->local(master):Install Git (link: https://git-scm.com/downloads)
+local(master)->local(master):Create an empty directory (Ex: C:/Users/Shirish/SampleProject)
+local(master)->local(master):Open Command Prompt and change directory (Type cd C:/Users/Shirish/SampleProject)
+local(master)->local(master):Open Type "git init" to initialise git
+remote(origin/master)->remote(origin/master):Create a GitHub account (https://github.com)
+remote(origin/master)->remote(origin/master):Create a new repository with the same name (SampleProject)
+local(master)<->remote(origin/master):To connect your local to remote, type "git remote add origin <git hub repository link>"
+local(master)<->remote(origin/master):To link your github account, type "git config –global user.name "<github_username>" " & "git config –global user.email "<email_address>" "
+local(master)->local(master):Add some sample files to the directory (sample.txt)
+note over local(master):sample.txt 
+local(master)->local(master):Type "git add sample.txt" to stage the file
+local(master)->local(master):Type "git commit -m "Initial commit" " to commit the file
+local(master)->remote(origin/master):Type "git push " to commit the file
+note over local(master):sample.txt 
+note over remote(origin/master):sample.txt
+remote(origin/master)->remote(origin/feature-1):Use GitHub GUI screen to create a new branch from master
+note over remote(origin/feature-1):sample.txt
+local(master)<-remote(origin/feature-1):Type "git fetch" to get the newly created branch
+local(master)->local(feature-1):Type "git checkout feature-1" to switch to the newly created branch
+note over local(feature-1):sample.txt
+local(feature-1)->local(feature-1):Add some sample files to the directory (sample2.txt)
+note over local(feature-1):sample2.txt 
+local(feature-1)->local(feature-1):Type "git add sample.txt" to stage the file
+local(feature-1)->local(feature-1):Type "git commit -m "Initial commit" " to commit the file
+local(feature-1)->remote(origin/feature-1):Type "git push " to commit the file
+note over local(master):sample.txt
+note over remote(origin/master):sample.txt 
+note over local(feature-1):sample.txt
+note over local(feature-1):sample2.txt
+note over remote(origin/feature-1):sample.txt
+note over remote(origin/feature-1):sample2.txt
+remote(origin/master)<-remote(origin/feature-1): Create a pull request to pull the changes from feature1 into master branch
+remote(origin/master)->remote(origin/master):Merge changes after the pull request is approved
+note over remote(origin/master):sample.txt
+note over remote(origin/master):sample2.txt
+local(master)<-remote(origin/master):Type "git pull" to pull the lastest changes from origin/master(remote) into master(local)
+note over local(master):sample.txt
+note over local(master):sample2.txt
